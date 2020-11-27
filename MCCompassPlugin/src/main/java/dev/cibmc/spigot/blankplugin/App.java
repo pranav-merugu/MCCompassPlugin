@@ -11,6 +11,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerEggThrowEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.CompassMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -59,7 +60,7 @@ public class App extends JavaPlugin implements Listener {
             Player player = (Player) sender;
             ItemStack item = new ItemStack(Material.COMPASS, 1);
             ItemMeta meta = item.getItemMeta();
-            meta.setDisplayName(ChatColor.BLUE + "Tracking Compass");
+            meta.setDisplayName(ChatColor.BLUE + "" + ChatColor.BOLD + "Tracking Compass");
             item.setItemMeta(meta);
             player.getPlayer().getInventory().addItem(item);
         }
