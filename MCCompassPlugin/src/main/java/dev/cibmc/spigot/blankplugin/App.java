@@ -29,25 +29,38 @@ public class App extends JavaPlugin implements Listener {
     public boolean onCommand(CommandSender sender, Command command, String alias, String[] args) {
         if (alias.equalsIgnoreCase("runner")) {
             if (args.length == 0) {
-                sender.sendMessage("Please specify a player!");
+                sender.sendMessage("Please specify what you want do do with the runner!");
             }
             else {
-                if (Bukkit.getPlayerExact(args[0]) == null) {
-                    sender.sendMessage("This player does not exist");
+                if (args[0].equalsIgnoreCase("add")){
+                    if (runner != null) {
+                        sender.sendMessage("a runner has already been selected! try using /runner remove instead");
+                    }
+                    else if (Bukkit.getPlayerExact(args[1]) == null) {
+                        sender.sendMessage("This player does not exist");
+                    }
+                    else {
+                        Player target = Bukkit.getPlayerExact(args[1]);
+                        runner = target;
+                    }
+                }
+                else if (args[0].equalsIgnoreCase("remove")) {
+                    runner = null;
                 }
                 else {
-                    Player target = Bukkit.getPlayerExact(args[0]);
-                    runner = target;
+                    sender.sendMessage("i don't understand what you mean");
                 }
             }
         }
+
+
         return true;
     }
 
     @EventHandler
-    public void playeregg(PlayerEggThrowEvent event) {
+    public void playeregg(PlayerEggThrowEvent event) {          // debugging purposes
         event.getPlayer().sendMessage("runner = " + runner);
-    }
+    }   
 
 
     @EventHandler
