@@ -42,15 +42,26 @@ public class App extends JavaPlugin implements Listener {
                     else {
                         Player target = Bukkit.getPlayerExact(args[1]);
                         runner = target;
+                        sender.sendMessage("They have become a runner");
                     }
                 }
                 else if (args[0].equalsIgnoreCase("remove")) {
                     runner = null;
+                    sender.sendMessage("They have no longer become a runner");
                 }
                 else {
                     sender.sendMessage("i don't understand what you mean");
                 }
             }
+        }
+
+        if (alias.equalsIgnoreCase("compass")) {
+            Player player = (Player) sender;
+            ItemStack item = new ItemStack(Material.COMPASS, 1);
+            ItemMeta meta = item.getItemMeta();
+            meta.setDisplayName(ChatColor.BLUE + "Tracking Compass");
+            item.setItemMeta(meta);
+            player.getPlayer().getInventory().addItem(item);
         }
 
 
@@ -62,15 +73,6 @@ public class App extends JavaPlugin implements Listener {
         event.getPlayer().sendMessage("runner = " + runner);
     }   
 
-
-    @EventHandler
-    public void playerjoin(PlayerJoinEvent event) {
-        ItemStack item = new ItemStack(Material.COMPASS, 1);
-        ItemMeta meta = item.getItemMeta();
-        meta.setDisplayName(ChatColor.BLUE + "Tracking Compass");
-        item.setItemMeta(meta);
-        event.getPlayer().getInventory().addItem(item);
-    } 
 /*
     @EventHandler
     public void viewplayer(PlayerInteractEntityEvent event) {

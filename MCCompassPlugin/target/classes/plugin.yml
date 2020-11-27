@@ -5,5 +5,8 @@ description: compass track
 
 commands:
   runner:
-    usage: /runner [runner]
+    usage: /runner [add | remove] [runner]
     description: sets runner to someone
+  compass:
+    usage: /compass
+    description: gives you a tracker compass
