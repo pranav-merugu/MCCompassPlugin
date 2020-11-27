@@ -1,3 +1,9 @@
 main: dev.cibmc.spigot.blankplugin.App
 name: BlankPlugin
 version: 0.1
+description: compass track
+
+commands:
+  runner:
+    usage: /runner [runner]
+    description: sets runner to someone
