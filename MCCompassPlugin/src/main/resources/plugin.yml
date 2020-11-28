@@ -1,7 +1,7 @@
 main: dev.cibmc.spigot.blankplugin.App
-name: BlankPlugin
+name: CompassTrack
 version: 0.1
-description: compass track
+description: compass that allows you to track other people (WIP)
 
 commands:
   runner:
